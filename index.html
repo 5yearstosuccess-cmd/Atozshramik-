@@ -375,7 +375,7 @@
     }
 
     // ✅ Google Sheet URL
-    const url = "https://script.google.com/macros/s/AKfycbw3Ft-FqlqxZUYlcN5iwhhgx-Y7Bj3WDCOgXhUorMvFAnEChfM6CNjDHzG_B1iInnQK/exec";
+    const url = "https://script.google.com/macros/s/AKfycbwVlYwdA5BF03gKHrmnXKDrYGNGwXQu0HcGJG6Ag61mPQgbq0vv0wg-4WWDUNkfFiGLWg/exec";
 
     // सभी fields का data इकट्ठा करो
     const formData = new FormData();
@@ -399,10 +399,10 @@
     btn.disabled = true;
     btn.textContent = '⏳ जमा हो रहा है...';
 
-    // ✅ Google Sheet ko data bhejo (no-cors mode for GitHub Pages)
-    fetch(url, { method: 'POST', body: formData, mode: 'no-cors' })
+    // ✅ Google Sheet ko data bhejo
+    fetch(url, { method: 'POST', body: formData })
+      .then(res => res.text())
       .then(() => {
-        // no-cors mein response nahi milta, par data sheet mein chala jata hai
         document.getElementById('theForm').style.display = 'none';
         document.getElementById('success').style.display = 'block';
         window.scrollTo({ top: document.getElementById('form-section').offsetTop - 80, behavior: 'smooth' });
